@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "adopta-app": {
+      "hosting": {
+        "adopta-app": [
+          "adopta-app"
+        ]
+      }
+    }
+  }
+}

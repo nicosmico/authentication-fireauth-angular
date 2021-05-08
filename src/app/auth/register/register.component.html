@@ -1,0 +1,19 @@
+<h2>Registrarse</h2>
+<button routerLink="/">home</button>
+<button routerLink="/auth/login">Login</button>
+<form [formGroup]="userForm" (ngSubmit)="saveUser($event)">
+    <input type="email" placeholder="email" formControlName="email" [ngClass]="{
+        'is-valid': isEmailValid,
+        'is-invalid': isEmailInvalid        
+    }">
+    <div *ngIf="isEmailInvalid">
+        <p *ngIf="emailField!.hasError('email-already-in-use')">El email ingresado ya está en uso</p>
+        <p *ngIf="emailField!.hasError('required')">Este campo es obligatorio</p>
+    </div>
+
+    <input type="password" placeholder="password" formControlName="password">
+    <input type="password" placeholder="confirm password" formControlName="confirmPassword">
+    <input type="text" placeholder="username" formControlName="username">
+    <input type="tel" placeholder="phone" formControlName="phone">
+    <button type="submit" [disabled]="userForm.invalid">Registrarse</button>
+</form>

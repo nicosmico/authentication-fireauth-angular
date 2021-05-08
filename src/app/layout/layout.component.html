@@ -1,0 +1,9 @@
+<p>Adopta App</p>
+<p *ngIf="currentUser">Bienvenido {{ currentUser.displayName }}</p>
+<small *ngIf="currentUser">Email: {{ currentUser.email }}</small><br>
+<small *ngIf="currentUser">Teléfono: {{ userPhone }}</small><br>
+
+<button routerLink="/auth/login" *ngIf="!currentUser">Login</button>
+<button routerLink="/auth/register" *ngIf="!currentUser">Registrarse</button>
+<button (click)="logout()" *ngIf="currentUser">Salir</button>
+<router-outlet></router-outlet>

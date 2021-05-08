@@ -1,0 +1,24 @@
+<h2>Ingresar</h2>
+<button routerLink="/">home</button>
+<button routerLink="/auth/register">Registrarse</button>
+<form [formGroup]="form" (ngSubmit)="login($event)">
+    <input type="email" placeholder="email" formControlName="email" [ngClass]="{
+        'is-valid': isEmailValid,
+        'is-invalid': isEmailInvalid        
+    }">
+    <div *ngIf="isEmailInvalid">
+        <p *ngIf="emailField!.hasError('user-not-found')">El email ingresado no está registrado</p>
+        <p *ngIf="emailField!.hasError('required')">Este campo es obligatorio</p>
+        <p *ngIf="emailField!.hasError('email')">Email ingresado es invalido</p>
+    </div>
+
+    <input type="password" placeholder="password" formControlName="password" [ngClass]="{
+        'is-valid': isPasswordValid,
+        'is-invalid': isPasswordInvalid
+    }">
+    <div *ngIf="isPasswordInvalid">
+        <p *ngIf="passwordField!.hasError('wrong-password')">La contraseña ingresada es incorrecta</p>
+        <p *ngIf="passwordField!.hasError('required')">Este campo es obligatorio</p>
+    </div>
+    <button type="submit" [disabled]="form.invalid">Ingresar</button>
+</form>
